@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { LibraryContext } from "./LibraryContext";
 import { Book } from "./Book";
+import { useLibrary } from "./LibraryContext";
 
 export const Category = ({ title, category }) => {
-  const { books } = useContext(LibraryContext);
+  const { books } = useLibrary();
   const categoryBooks = books.filter((book) => book.category === category);
   return (
     <>

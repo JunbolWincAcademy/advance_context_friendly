@@ -1,28 +1,15 @@
-import { useState } from "react";
-import { collection } from "./collection";
 import { Books } from "./Books";
-import { LibraryContext } from "./LibraryContext";
+import { LibraryContextProvider } from "./LibraryContext";// ❗ Look how we're importing the component 
+//with a different name that from from the file
 
 function Library() {
-  const [books, setBooks] = useState(collection.books);
-  const borrowBook = (id) => {
-    const newBooks = books.map((book) =>
-      book.id === id ? { ...book, available: false } : book
-    );
-    return setBooks(newBooks);
-  };
-  const returnBook = (id) => {
-    const newBooks = books.map((book) =>
-      book.id === id ? { ...book, available: true } : book
-    );
-    return setBooks(newBooks);
-  };
+
   return (
     <div className="App">
       <h1>Library</h1>
-      <LibraryContext.Provider value={{ books, borrowBook, returnBook }}>
+      <LibraryContextProvider>
         <Books />
-      </LibraryContext.Provider>
+      </LibraryContextProvider>
     </div>
   );
 }

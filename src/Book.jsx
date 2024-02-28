@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { LibraryContext } from "./LibraryContext";
+import { useLibrary } from "./LibraryContext";
 
 export const Book = ({ book }) => {
-  const { borrowBook, returnBook } = useContext(LibraryContext);
-
+  const { borrowBook, returnBook } = useLibrary();
   return (
     <>
       <h4>📖 {book.title}</h4>
