@@ -19,7 +19,13 @@ export const LibraryContextProvider = ({ children }) => {
   return <LibraryContext.Provider value={{ books, borrowBook, returnBook }}>{children}</LibraryContext.Provider>;
 };
 
-//-----This is the custom HOOK:❗ using the keyword "use" as prefix.
+//-----This is the custom HOOK:❗ All custom made Hooks need to have 'use' as prefix.
+/* The conditional check if (!context) within the custom hook is indeed a safeguard. It's there to ensure that the hook (and thus any context values or functions) is used within a component that is wrapped by the appropriate ContextProvider. If Books is going to use uselibrary it needs to be like thi:
+<LibraryContextProvider>
+        <Books />
+      </LibraryContextProvider>
+
+*/
 export const useLibrary = () => {
   const context = useContext(LibraryContext);
   if (!context) {
